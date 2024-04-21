@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                                         for (MunicipalityData data: municipalityDataArrayList) {
                                             dataString = dataString + data.getYear() + ": " + data.getPopulation() + "\n";
                                         }
-                                        txtPopulation.setText(dataString);
+                                        // txtPopulation.setText(dataString);
 
                                         String weatherDataAsString = weatherData.getName() + "\n" +
                                                 "Weather now: " + weatherData.getMain() + "(" + weatherData.getDescription() + ")\n" +
@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
                                         int index = municipalityDataArrayList.size();
                                         MunicipalityData mdata = (MunicipalityData) municipalityDataArrayList.get(index-1);
                                         intent.putExtra("residentsTotal", String.valueOf(mdata.getPopulation()));
-                                        intent.putExtra("additionalInfo", "Congress 10%" + "\n" + "TDP 20%");
+                                        intent.putExtra("additionalInfo", "SDP 10%" + "\n" + "Kokoomus 20%" + "\n"
+                                                + "Persut 10%" + "\n" + "Vihreat 15%");
                                         intent.putExtra("weatherDetails", weatherDataAsString );
                                         startActivity(intent);
 
