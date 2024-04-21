@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MunicipalityAndWeather</string>
+    <string name="basic_info_button">Basic Info</string>
+    <string name="political_distribution_title">Political Distribution: </string>
+    <string name="residents_title">Residents: </string>
+    <string name="title_activity_municipality_info">MunicipalityInfoActivity</string>
+</resources>
