@@ -24,7 +24,6 @@ import java.util.concurrent.Executors;
  */
 public class MainActivity extends AppCompatActivity {
 
-
     private TextView txtPopulation;
     private TextView txtWeather;
 
@@ -79,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
 
                                         String weatherDataAsString = weatherData.getName() + "\n" +
                                                 "Weather now: " + weatherData.getMain() + "(" + weatherData.getDescription() + ")\n" +
-                                                "Temperature: " + weatherData.getTemperature() + "\n" +
-                                                "Wind speed: " + weatherData.getWindSpeed() + "\n";
+                                                "Temperature: " + weatherData.getTemperature() + " °F  \n" +
+                                                "Wind speed: " + weatherData.getWindSpeed() + "m/s  \n";
 
-                                        txtWeather.setText(weatherDataAsString);
+                                        // txtWeather.setText(weatherDataAsString);
 
                                         Intent intent = new Intent(getApplicationContext(), MunicipalityInfoActivity.class);
                                         intent.putExtra("municipalityName",editMunicipalityName.getText().toString());
