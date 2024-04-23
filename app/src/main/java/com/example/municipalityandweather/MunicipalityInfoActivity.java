@@ -1,8 +1,11 @@
 package com.example.municipalityandweather;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -56,5 +59,11 @@ public class MunicipalityInfoActivity extends AppCompatActivity {
         }
 
     }
+    public void onQuizButtonClick( View view) {
+        Context context = this;
+        Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
+        startActivity(intent);
+    }
+
 }
 

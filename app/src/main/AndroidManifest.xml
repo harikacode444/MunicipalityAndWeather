@@ -28,6 +28,11 @@
             android:exported="false"
             android:label="@string/title_activity_municipality_info"
             android:theme="@style/Theme.MunicipalityAndWeather" />
+        <activity
+            android:name=".QuizActivity"
+            android:exported="false"
+            android:label="QuizActivity"
+            android:theme="@style/Theme.MunicipalityAndWeather" />
     </application>
 
 </manifest>
