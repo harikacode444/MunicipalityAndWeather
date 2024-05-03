@@ -7,44 +7,42 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class QuizActivity extends AppCompatActivity {
 
     private TextView questionTextView;
-    private RadioGroup answerRadioGroup;
-    private Button nextButton;
+    private RadioGroup optionRadioGroup;
+    private Button submitButton;
 
     private String[] questions = {
-            "What is the capital of France?",
-            "What is the largest planet in our solar system?",
-            "Who wrote 'To Kill a Mockingbird'?",
-            "What is the collective name for a group of unicorns?",
-            "What is the most common color of toilet paper in France?",
-            "What color is an airplane's famous black box?"
+            "The capital of France is Paris.",
+            "Mount Everest is the tallest mountain in the world.",
+            "Water boils at 100 degrees Celsius.",
+            "The Earth is flat.",
+            "The Great Wall of China is visible from space.",
+            "Albert Einstein invented the theory of relativity.",
+            "Sharks are mammals.",
+            "The currency of Japan is the yuan.",
+            "The human body has 206 bones.",
+            "Mars is the closest planet to the Sun."
     };
 
-    private String[] correctAnswers = {
-            "Paris",
-            "Jupiter",
-            "Harper Lee",
-            "A blessing",
-            "Pink",
-            "Orange"
-    };
-
-    private String[][] allAnswers = {
-            {"Paris", "London", "Berlin"},
-            {"Mars", "Jupiter", "Saturn"},
-            {"Stephen King", "J.K. Rowling", "Harper Lee"},
-            {"A sparkle", "A spell", "A blessing"},
-            {"Pink", "White", "Blue"},
-            {"Red", "Orange", "Black"},
+    private boolean[] answers = {
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
     };
 
     private int currentQuestionIndex = 0;
+    private int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +50,12 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_program);
 
         questionTextView = findViewById(R.id.questionTextView);
-        answerRadioGroup = findViewById(R.id.answerRadioGroup);
-        nextButton = findViewById(R.id.nextButton);
+        optionRadioGroup = findViewById(R.id.optionRadioGroup);
+        submitButton = findViewById(R.id.submitButton);
 
         displayQuestion();
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkAnswer();
@@ -66,37 +64,46 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void displayQuestion() {
-        questionTextView.setText(questions[currentQuestionIndex]);
-        RadioButton[] radioButtons = new RadioButton[3];
-        for (int i = 0; i < 3; i++) {
-            radioButtons[i] = (RadioButton) answerRadioGroup.getChildAt(i);
-            radioButtons[i].setText(allAnswers[currentQuestionIndex][i]);
+        if (currentQuestionIndex < questions.length) {
+            questionTextView.setText(questions[currentQuestionIndex]);
+            optionRadioGroup.clearCheck();
+        } else {
+            showResult();
         }
     }
 
     private void checkAnswer() {
-        int selectedRadioButtonId = answerRadioGroup.getCheckedRadioButtonId();
-        if (selectedRadioButtonId != -1) {
-            RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
-            String selectedAnswer = selectedRadioButton.getText().toString();
-            if (selectedAnswer.equals(correctAnswers[currentQuestionIndex])) {
-                Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Incorrect. The correct answer is " + correctAnswers[currentQuestionIndex], Toast.LENGTH_SHORT).show();
+        int selectedOptionId = optionRadioGroup.getCheckedRadioButtonId();
+        if (selectedOptionId != -1) {
+            RadioButton selectedRadioButton = findViewById(selectedOptionId);
+            boolean userAnswer = selectedRadioButton.getText().equals("True");
+
+            if (userAnswer == answers[currentQuestionIndex]) {
+                score++;
             }
-            // Move to the next question
+
             currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                displayQuestion();
-                answerRadioGroup.clearCheck();
-            } else {
-                // End of quiz
-                Toast.makeText(this, "Quiz finished!", Toast.LENGTH_SHORT).show();
-                nextButton.setEnabled(false);
-            }
+            displayQuestion();
         } else {
-            Toast.makeText(this, "Please select an answer.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void showResult() {
+        double percentage = ((double) score / questions.length) * 100;
+        String message = "Your score: " + score + " out of " + questions.length + "\n";
+        if (percentage >= 70) {
+            message += "Good job!";
+        } else if (percentage >= 50) {
+            message += "Not bad!";
+        } else {
+            message += "Try again!";
+        }
+        // Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        // Update the resultTextView with the result message
+        TextView resultTextView = findViewById(R.id.resultTextView);
+        resultTextView.setText(message);
+
     }
 }
 

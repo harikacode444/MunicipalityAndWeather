@@ -7,46 +7,57 @@
 
     <TextView
         android:id="@+id/questionTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_width="374dp"
+        android:layout_height="108dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Question"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
 
     <RadioGroup
-        android:id="@+id/answerRadioGroup"
+        android:id="@+id/optionRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/questionTextView"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp">
 
         <RadioButton
-            android:id="@+id/answer1RadioButton"
+            android:id="@+id/trueRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Answer 1" />
+            android:text="True"/>
 
         <RadioButton
-            android:id="@+id/answer2RadioButton"
+            android:id="@+id/falseRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Answer 2" />
-
-        <RadioButton
-            android:id="@+id/answer3RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Answer 3" />
-
+            android:text="False"/>
     </RadioGroup>
 
     <Button
-        android:id="@+id/nextButton"
+        android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/answerRadioGroup"
+        android:text="Submit"
+        android:layout_below="@id/optionRadioGroup"
         android:layout_alignParentEnd="true"
-        android:text="Next" />
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submitButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
 </RelativeLayout>
