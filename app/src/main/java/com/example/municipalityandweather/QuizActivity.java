@@ -16,16 +16,16 @@ public class QuizActivity extends AppCompatActivity {
     private Button submitButton;
 
     private String[] questions = {
-            "The capital of France is Paris.",
-            "Mount Everest is the tallest mountain in the world.",
-            "Water boils at 100 degrees Celsius.",
-            "The Earth is flat.",
-            "The Great Wall of China is visible from space.",
-            "Albert Einstein invented the theory of relativity.",
-            "Sharks are mammals.",
-            "The currency of Japan is the yuan.",
-            "The human body has 206 bones.",
-            "Mars is the closest planet to the Sun."
+            "The capital of Finland is Helsinki",
+            "Espoo's current population exceeds 300000 residents",
+            "The population of Tampere is less than Espoo.",
+            "The capital of Finland is Turku.",
+            "Finland has the most lakes in the world",
+            "Helsinki has more than 500000 residents.",
+            "Oulu is the third most populated city in Finland",
+            "Pori is known as the city of river and sea",
+            "Vaasa is home to many students, approx. 12000",
+            "Tampere is the most populous city in Finland"
     };
 
     private boolean[] answers = {
@@ -36,8 +36,8 @@ public class QuizActivity extends AppCompatActivity {
             false,
             true,
             false,
-            false,
-            false,
+            true,
+            true,
             false
     };
 
